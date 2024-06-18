@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
   titulo = 'WillVelsAdmin';
 imagenPrincipal = 'https://content.revistainteriores.es/medio/2023/12/12/velas-aromaticas-artesanales_12a5b249_231212162955_1280x794.jpg';
