@@ -1,6 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { HomeComponent } from './app/domains/home/home.component';
@@ -9,9 +10,11 @@ import { CategoriesComponent } from './app/domains/categories/categories.compone
 import { OrdersComponent } from './app/domains/orders/orders.component';
 import { UsersComponent } from './app/domains/users/users.component';
 import { routes } from './app/app.routes';
+import { HeaderComponent } from './app/components/header/header.component';
 
 @NgModule({
   declarations: [
+    HeaderComponent,
     AppComponent,
     HomeComponent,
     ProductsComponent,
@@ -20,11 +23,16 @@ import { routes } from './app/app.routes';
     UsersComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes) 
   ],
   providers: [],
   bootstrap: [AppComponent], 
+
+  exports: [
+    HeaderComponent, 
+  ]
 })
 export class AppModule { }
 
