@@ -11,6 +11,7 @@ import { OrdersComponent } from './app/domains/orders/orders.component';
 import { UsersComponent } from './app/domains/users/users.component';
 import { routes } from './app/app.routes';
 import { HeaderComponent } from './app/components/header/header.component';
+import { CrearProductoComponent } from './app/domains/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HeaderComponent } from './app/components/header/header.component';
     CategoriesComponent,
     OrdersComponent,
     UsersComponent,
+    CrearProductoComponent,
   ],
   imports: [
     CommonModule,
