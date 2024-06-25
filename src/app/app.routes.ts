@@ -7,6 +7,7 @@ import { OrdersComponent } from './domains/orders/orders.component';
 import { CrearProductoComponent } from './domains/crear-producto/crear-producto.component';
 
 
+
 export const routes: Routes = [
    
     { path: '', component: HomeComponent },

@@ -14,6 +14,8 @@ import { OrdersComponent } from './app/domains/orders/orders.component';
 import { UsersComponent } from './app/domains/users/users.component';
 import { HeaderComponent } from './app/components/header/header.component';
 import { CrearProductoComponent } from './app/domains/crear-producto/crear-producto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -32,7 +34,9 @@ import { CrearProductoComponent } from './app/domains/crear-producto/crear-produ
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes) 
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule ,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent], 
