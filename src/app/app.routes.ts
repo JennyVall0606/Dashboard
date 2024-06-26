@@ -5,6 +5,7 @@ import { CategoriesComponent } from './domains/categories/categories.component';
 import { UsersComponent } from './domains/users/users.component';
 import { OrdersComponent } from './domains/orders/orders.component';
 import { CrearProductoComponent } from './domains/crear-producto/crear-producto.component';
+import { CrearUsuarioComponent } from './domains/crear-usuario/crear-usuario.component';
 
 
 
@@ -16,4 +17,5 @@ export const routes: Routes = [
     { path: 'orders', component: OrdersComponent },
     { path: 'users', component: UsersComponent },
     { path: 'products/CrearProducto', component:CrearProductoComponent},
+    { path: 'users/CrearUsuario', component: CrearUsuarioComponent},
 ];

@@ -1,2 +1,44 @@
 <app-header></app-header>
-<p>users works!</p>
+
+
+<div class = "container mt-5">
+    <div class="col-lg-18 offset-lg-0">
+        <div class="card">
+            <div class="card-body text center">
+                <button class="btn btn-success float-end"  [routerLink]="['/users/CrearUsuario']">Crear Usuario</button>
+                <span class="titulo">Listado de Usuarios</span>                
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre de Usuario</th>
+                        
+                        
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        
+                        <th scope="row">1</th>
+                        <td>Leticia Diaz</td>
+                        
+                                         
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Pedro Perez</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>                        
+                        <td>Pablo Perez</td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

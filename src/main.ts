@@ -16,6 +16,7 @@ import { HeaderComponent } from './app/components/header/header.component';
 import { CrearProductoComponent } from './app/domains/crear-producto/crear-producto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario.component';
 
 
 
@@ -29,6 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     OrdersComponent,
     UsersComponent,
     CrearProductoComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     CommonModule,
