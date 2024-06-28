@@ -1,30 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  _id?: number;
-  name: String; 
-  price: Number;
-  description: String;
-  tamaño: String; 
-  stock: Number;
-  color: String;
-  aroma:String;
 
+  constructor(private http: HttpClient) {}
+  getProducts() {
+    return this.http.get('http://localhost:3000/api/products');
+  }
 
-
-  constructor(name: String, price: Number, description: String, tamaño: String, stock: Number, color: String, aroma:String) { 
-
-    this.name = name;
-    this.price = price;
-    this.description = description;
-    this.tamaño = tamaño;
-    this.stock = stock;
-    this.color = color;
-    this.aroma = aroma;
-    
-
+  getProductById(id: string) {
+    return this.http.get('http://localhost:3000/api/products/' + id);
   }
 }

@@ -5,7 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+
+
+
+import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { HomeComponent } from './app/domains/home/home.component';
 import { ProductsComponent } from './app/domains/products/products.component';
@@ -17,6 +22,8 @@ import { CrearProductoComponent } from './app/domains/crear-producto/crear-produ
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario.component';
+import { CardProductComponent } from './app/components/card-product/card-product.component';
+
 
 
 
@@ -30,7 +37,9 @@ import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario
     OrdersComponent,
     UsersComponent,
     CrearProductoComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    CardProductComponent
+    
   ],
   imports: [
     CommonModule,
@@ -38,16 +47,21 @@ import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule ,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent], 
+  
 
   exports: [
     HeaderComponent, 
   ]
 })
+
 export class AppModule { }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
+
   .catch(err => console.error(err));
+

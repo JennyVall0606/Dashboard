@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { ProductsComponent } from '../products/products.component';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Product } from '../../models/product.model';
 
 
 
@@ -14,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./crear-producto.component.css']
 })
 export class CrearProductoComponent implements OnInit{
+  
 
   productoForm: FormGroup;
 
@@ -39,16 +41,16 @@ export class CrearProductoComponent implements OnInit{
     console.log(this.productoForm.get('producto')?.value);
     
 
-    const PRODUCTO: ProductsComponent = {
-      producto: this.productoForm.get('producto')?.value,
+    const nuevoProducto: Product = {
+      name: this.productoForm.get('producto')?.value,
       descripcion: this.productoForm.get('descripcion')?.value,
-      tamaño: this.productoForm.get('tamaño')?.value,
-      precio: this.productoForm.get('precio')?.value,
+      size: this.productoForm.get('tamaño')?.value,
+      price: this.productoForm.get('precio')?.value,
       
 
 
     }
-    console.log(PRODUCTO);
+    console.log(nuevoProducto);
     this.toastr.success('El producto fue registrado con exito!', 'Producto registrado!');
     this.router.navigate(["products"]);
   }
