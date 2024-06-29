@@ -24,15 +24,53 @@
                 <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeSizeControl(i)">
                   <i class="fas fa-trash"></i>
                 </button>
-              </div>
-              <div class="d-flex justify-content-end mb-3">
                 <button type="button" class="btn btn-primary btn-sm" (click)= "addSizeControl()">
-                  <i class="fas fa-plus fa-lg"></i> Agregar Nuevo Size
+                    <i class="fas fa-plus fa-lg text-muted"></i>
                 </button>
               </div>
+              
             </div>
+            <div formArrayName="color">
+                <div *ngFor="let control of color.controls; let i = index" class="mb-3 d-flex align-items-center">
+                  <input type="text" class="form-control" [formControlName]="i" placeholder="Color {{ i + 1 }}">
+                  <button type="button" class="btn btn-danger btn-sm ms-2"  (click)="removeColorControl(i)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" (click)="addColorControl()">
+                    <i class="fas fa-plus fa-lg text-muted"></i>
+                </button>
+                </div>
+               
+              </div>
+
+              <div formArrayName="aroma">
+                <div *ngFor="let control of aroma.controls; let i = index" class="mb-3 d-flex align-items-center">
+                  <input type="text" class="form-control" [formControlName]="i" placeholder="Aroma {{ i + 1 }}">
+                  <button type="button" class="btn btn-danger btn-sm ms-2"  (click)="removeAromaControl(i)">
+                    <i class="fas fa-trash"></i>
+                  </button>               
+                  <button type="button" class="btn btn-primary btn-sm" (click)="addAromaControl()">
+                    <i class="fas fa-plus fa-lg text-muted"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div formArrayName="stock">
+                <div *ngFor="let control of stock.controls; let i = index" class="mb-3 d-flex align-items-center">
+                  <input type="number" class="form-control" [formControlName]="i" placeholder="Stock {{ i + 1 }}">
+                  <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeStockControl(i)">
+                    <i class="fas fa-trash"></i>                    
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" (click)="addStockControl()">
+                    <i class="fas fa-plus fa-lg text-muted"></i>
+                  </button> 
+                </div>                
+                                 
+              </div>
+
           
-            <div class="mb-3 d-flex justify-content-end">
+            <div class="mb-3 d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" (click)="volver()">Volver</button>
               <button type="submit" class="btn btn-primary">Guardar Producto</button>
             </div>
           </form>

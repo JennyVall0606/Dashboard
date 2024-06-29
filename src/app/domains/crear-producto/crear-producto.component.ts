@@ -28,11 +28,17 @@ export class CrearProductoComponent implements OnInit{
         producto: ['', Validators.required],
         descripcion: ['', Validators.required],
         size: this.fb.array([]),
+        color: this.fb.array([]),
+        aroma: this.fb.array([]),
+        stock: this.fb.array([])
         
       }
     );
 
     this.addSizeControl();
+    this.addColorControl();
+    this.addAromaControl();
+    this.addStockControl();
     
   }
 
@@ -48,6 +54,18 @@ export class CrearProductoComponent implements OnInit{
     return this.productoForm.get('price') as FormArray;
   }
 
+  get color(): FormArray {
+    return this.productoForm.get('color') as FormArray;
+  }
+
+  get aroma(): FormArray {
+    return this.productoForm.get('aroma') as FormArray;
+  }
+
+  get stock(): FormArray {
+    return this.productoForm.get('stock') as FormArray;
+  }
+
   
 
   agregarProducto(): void {
@@ -55,7 +73,7 @@ export class CrearProductoComponent implements OnInit{
       return;
     }
     
-    const { producto, descripcion, size, price } = this.productoForm.value;
+    const { producto, descripcion, size, stock } = this.productoForm.value;
 
     const sizes = size.map((s: any) => ({
       code: s.size,
@@ -66,6 +84,9 @@ export class CrearProductoComponent implements OnInit{
       name: producto,
       descripcion: descripcion,
       size: sizes,
+      color: this.color.value,
+      aroma: this.aroma.value,
+      stock: stock,
       price: []  
     };
     console.log(nuevoProducto);
@@ -101,6 +122,38 @@ export class CrearProductoComponent implements OnInit{
     if (this.price.length > 1) {
       this.price.removeAt(index);
     }
+  }
+
+  addColorControl(): void {
+    this.color.push(this.fb.control('')); 
+  }
+
+  removeColorControl(index: number): void {
+    if (this.color.length > 1) {
+      this.color.removeAt(index);
+    }
+  }
+
+  addAromaControl(): void {
+    this.aroma.push(this.fb.control(''));
+  }
+
+  removeAromaControl(index: number): void {
+    if (this.aroma.length > 1) {
+      this.aroma.removeAt(index);
+    }
+  }
+  
+  addStockControl(): void {
+    this.stock.push(this.fb.control(''));
+  }
+
+  removeStockControl(index: number): void {
+    this.stock.removeAt(index);
+  }
+
+  volver(): void {
+    this.router.navigate(['/products']);
   }
 }
 

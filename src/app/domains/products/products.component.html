@@ -11,7 +11,11 @@
             <tr>
               <th scope="col">Nombre</th>
               <th scope="col">Descripción</th>
+              <th scope="col">Aroma</th>
+              <th scope="col">Color</th>
+              <th scope="col">Size</th>
               <th scope="col">Precio</th>
+              <th scope="col">Stock</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -19,7 +23,32 @@
             <tr *ngFor="let product of products; trackBy: trackById">
               <td>{{ product.name }}</td>
               <td>{{ product.description }}</td>
-              <td>{{ product.price | currency }}</td>
+              
+              <td>
+                <ul>
+                  <li *ngFor="let aroma of product.aroma">{{ aroma }}</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li *ngFor="let color of product.color">{{ color }}</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li *ngFor="let size of product.size">{{ size.code }}</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li *ngFor="let price of product.size">{{ price.price | currency:'USD':'symbol':'1.0-0' }}</li>
+                </ul>
+              </td>
+              <td>
+              <ul>
+                <li *ngFor="let st of product.stock">{{ st }}</li>
+              </ul>
+              </td>
               <td>
                 <a [routerLink]="['/products/EditarProducto', product._id]" class="btn btn-warning">Editar</a>
                 <button (click)="eliminarProducto(product._id)" class="btn btn-danger">Eliminar</button>

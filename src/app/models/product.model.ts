@@ -4,6 +4,9 @@ export interface Product {
   descripcion: string;
   size: { code: string }[];
   price: { price: number }[];
+  aroma: string[];
+  color: string[]; 
+  stock: string[];
  
 }
 
