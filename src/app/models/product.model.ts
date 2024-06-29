@@ -1,10 +1,9 @@
 export interface Product {
   
-  descripcion: string;
   name: string;
-  price: number;
-  size: number;
-  
+  descripcion: string;
+  size: { code: string }[];
+  price: { price: number }[];
  
 }
 

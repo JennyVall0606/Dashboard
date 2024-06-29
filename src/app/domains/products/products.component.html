@@ -1,19 +1,33 @@
-
 <app-header></app-header>
 
-<div class = "container mt-5">
-    <div class="col-lg-18 offset-lg-0">
-        <div class="card">
-            <div class="card-body text center">
-                <span class="titulo">Listado de Productos</span>
-                <button class="btn btn-success float-end"  [routerLink]="['/products/CrearProducto']">Nuevo</button>
-                <section class="grid-container">
-                  @for (product of products(); track product.id)
-                  {<a [routerLink]="['/product', product._id]">
-                    <app-card-product [titulo]="product.name" [description]="product.description"  [price]="product.price"/>
-                  </a>}
-                </section>
-            </div>
-        </div>
+<div class="container mt-5">
+  <div class="col-lg-12 offset-lg-0">
+    <div class="card">
+      <div class="card-body text-center">
+        <span class="titulo">Listado de Productos</span>
+        <button class="btn btn-success float-end" [routerLink]="['/products/CrearProducto']">Nuevo Producto</button>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products; trackBy: trackById">
+              <td>{{ product.name }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.price | currency }}</td>
+              <td>
+                <a [routerLink]="['/products/EditarProducto', product._id]" class="btn btn-warning">Editar</a>
+                <button (click)="eliminarProducto(product._id)" class="btn btn-danger">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>

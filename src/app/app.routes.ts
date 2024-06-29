@@ -6,6 +6,7 @@ import { UsersComponent } from './domains/users/users.component';
 import { OrdersComponent } from './domains/orders/orders.component';
 import { CrearProductoComponent } from './domains/crear-producto/crear-producto.component';
 import { CrearUsuarioComponent } from './domains/crear-usuario/crear-usuario.component';
+import { EditarProductoComponent } from './components/editar-producto-component/editar-producto-component.component';
 
 
 
@@ -18,4 +19,5 @@ export const routes: Routes = [
     { path: 'users', component: UsersComponent },
     { path: 'products/CrearProducto', component:CrearProductoComponent},
     { path: 'users/CrearUsuario', component: CrearUsuarioComponent},
+    { path: 'products/EditarProducto/:id', component: EditarProductoComponent },
 ];

@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario.component';
 import { CardProductComponent } from './app/components/card-product/card-product.component';
+import { EditarProductoComponent } from './app/components/editar-producto-component/editar-producto-component.component';
 
 
 
@@ -38,7 +39,8 @@ import { CardProductComponent } from './app/components/card-product/card-product
     UsersComponent,
     CrearProductoComponent,
     CrearUsuarioComponent,
-    CardProductComponent
+    CardProductComponent,
+    EditarProductoComponent
     
   ],
   imports: [

@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,16 +10,28 @@ import { CardProductComponent } from '../../components/card-product/card-product
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent {
-  private productsService = inject(ProductoService)
+export class ProductsComponent implements OnInit {
+  products: any[] = [];
 
-  products = signal<any>([])
+  constructor(private productoService: ProductoService, private router: Router) {}
 
-  ngOnInit(){
-    this.productsService.getProducts().subscribe({
-      next: (response)=>{
-        this.products.set(response)
+  ngOnInit(): void {
+    this.productoService.getProducts().subscribe((data: any[]) => {
+      this.products = data;
+    });
+  }
+  trackById(index: number, item: any): string {
+    return item._id;
+  }
+  eliminarProducto(id: string): void {
+    this.productoService.deleteProduct(id).subscribe({
+      next: () => {
+        this.products = this.products.filter(product => product._id !== id);
+        alert('Producto eliminado con éxito');
+      },
+      error: (err) => {
+        console.error('Error eliminando producto', err);
       }
-    })
+    });
   }
 }
