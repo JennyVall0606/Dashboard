@@ -1,11 +1,13 @@
 <header>
     <div class="logo-container">
-      <a [routerLink]="['']">
+      <a [routerLink]="['/home']">
         <img
           src="https://img2.freepnges.com/20231028/pop/transparent-lotus-flower-1711043233823.webp"
           alt=""
           id="logo"
         />
       </a>
+      <button (click)="logout()">Cerrar Sesión</button>
     </div>
+    
 </header>

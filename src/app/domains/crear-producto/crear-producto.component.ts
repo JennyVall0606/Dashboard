@@ -6,13 +6,8 @@ import { Product } from '../../models/product.model';
 import { ProductoService } from '../../services/producto.service';
 
 
-
-
-
-
 @Component({
-  selector: 'app-crear-producto',
- 
+  selector: 'app-crear-producto', 
   templateUrl: './crear-producto.component.html',
   styleUrls: ['./crear-producto.component.css']
 })

@@ -10,30 +10,32 @@
       </div>
       <div id="grid-container">
         <div id="products" class="productos-imagen">
-          <a [routerLink]="['products']">
+          <a [routerLink]="['/products']">
             <img src="{{ imagenListaProducto }}" alt="Imagen de Producto" />
             <span class="imagen-texto">Lista de Productos</span>
           </a>
         </div>
         <div id="categories" class="categorias-imagen">
-          <a [routerLink]="['categories']">
+          <a [routerLink]="['/categories']">
             <img src="{{ imagenListaCategorias }}" alt="Imagen de Categorías" />
             <span class="imagen-texto">Lista de Categorías</span>
           </a>
         </div>
         <div id="orders" class="ordenes-imagen">
-          <a [routerLink]="['orders']">
+          <a [routerLink]="['/orders']">
             <img src="{{ imagenListaOrdenes }}" alt="Imagen de Órdenes" />
             <span class="imagen-texto">Lista de Órdenes</span>
           </a>
         </div>
         <div id="users" class="usuarios-imagen">
-          <a [routerLink]="['users']">
+          <a [routerLink]="['/users']">
           <img src="{{ imagenUsuarios }}" alt="Imagen de Usuarios" />
           <span class="imagen-texto">Lista de Usuarios</span>
         </a>
         </div>
       </div>
     </div>
+
+    <router-outlet></router-outlet>
   </div>
 </main>

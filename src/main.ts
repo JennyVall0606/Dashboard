@@ -24,6 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CrearUsuarioComponent } from './app/domains/crear-usuario/crear-usuario.component';
 import { CardProductComponent } from './app/components/card-product/card-product.component';
 import { EditarProductoComponent } from './app/components/editar-producto-component/editar-producto-component.component';
+import { LoginComponent } from './app/domains/login/login.component';
+import { RegisterComponent } from './app/domains/register/register.component';
 
 
 
@@ -40,7 +42,9 @@ import { EditarProductoComponent } from './app/components/editar-producto-compon
     CrearProductoComponent,
     CrearUsuarioComponent,
     CardProductComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    LoginComponent,
+    RegisterComponent
     
   ],
   imports: [
