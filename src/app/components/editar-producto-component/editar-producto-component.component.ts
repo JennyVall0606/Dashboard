@@ -23,12 +23,13 @@ export class EditarProductoComponent implements OnInit {
     this.productoForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required],
       size: this.fb.array([]),
       color: this.fb.array([]),
       scent: this.fb.array([]),
-      stock: this.fb.array([]),
+      stock: this.fb.array([])
     });
+
+    this.id = this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit(): void {
@@ -37,24 +38,30 @@ export class EditarProductoComponent implements OnInit {
       this.productoForm.patchValue({
         name: data.name,
         description: data.description,
-        price: data.price,
       });
 
       this.size.clear();
+      data.size.forEach((size: any) => {
+        this.size.push(this.fb.group({
+          size: [size.code, Validators.required],
+          price: [size.price, Validators.required]
+        }));
+      });
+
       this.color.clear();
+      data.color.forEach((color: any) => {
+        this.color.push(this.fb.control(color));
+      });
+
       this.scent.clear();
+      data.scent.forEach((scent: any) => {
+        this.scent.push(this.fb.control(scent));
+      });
+
       this.stock.clear();
-
-      data.size.forEach((sizeItem: any) => this.size.push(this.fb.group({
-        size: [sizeItem.code, Validators.required],
-        price: [sizeItem.price, Validators.required]
-      })));
-
-      data.color.forEach((colorItem: any) => this.color.push(this.fb.control(colorItem)));
-
-      data.scent.forEach((scentItem: any) => this.scent.push(this.fb.control(scentItem)));
-
-      data.stock.forEach((stockItem: any) => this.stock.push(this.fb.control(stockItem)));
+      data.stock.forEach((stock: any) => {
+        this.stock.push(this.fb.control(stock));
+      });
     });
   }
 
@@ -79,9 +86,23 @@ export class EditarProductoComponent implements OnInit {
       return;
     }
 
-    const updatedProduct = this.productoForm.value;
+    const { name, description, size, stock } = this.productoForm.value;
 
-    this.productoService.updateProduct(this.id, updatedProduct).subscribe(
+    const sizes = size.map((s: any) => ({
+      code: s.size,
+      price: s.price
+    }));
+
+    const productoActualizado = {
+      name: name,
+      description: description,
+      size: sizes,
+      color: this.color.value,
+      scent: this.scent.value,
+      stock: stock
+    };
+
+    this.productoService.updateProduct(this.id, productoActualizado).subscribe(
       () => {
         this.toastr.success('Producto actualizado con éxito', 'Éxito');
         this.router.navigate(['/products']);
@@ -93,50 +114,48 @@ export class EditarProductoComponent implements OnInit {
     );
   }
 
-  removeSizeControl(index: number) {
-    const sizeArray = this.productoForm.get('size') as FormArray;
-    sizeArray.removeAt(index);
-  }
-
-  addSizeControl() {
-    const sizeArray = this.productoForm.get('size') as FormArray;
-    sizeArray.push(this.fb.group({
-      size: '',
-      price: ''
+  addSizeControl(): void {
+    this.size.push(this.fb.group({
+      size: ['', Validators.required],
+      price: ['', Validators.required] 
     }));
   }
 
-  removeColorControl(index: number) {
-    const colorArray = this.productoForm.get('color') as FormArray;
-    colorArray.removeAt(index);
+  removeSizeControl(index: number): void {
+    if (this.size.length > 1) {
+      this.size.removeAt(index);
+    }
   }
 
-  addColorControl() {
-    const colorArray = this.productoForm.get('color') as FormArray;
-    colorArray.push(this.fb.control(''));
+  addColorControl(): void {
+    this.color.push(this.fb.control('')); 
   }
 
-  removeScentControl(index: number) {
-    const scentArray = this.productoForm.get('scent') as FormArray;
-    scentArray.removeAt(index);
+  removeColorControl(index: number): void {
+    if (this.color.length > 1) {
+      this.color.removeAt(index);
+    }
   }
 
-  addScentControl() {
-    const scentArray = this.productoForm.get('scent') as FormArray;
-    scentArray.push(this.fb.control(''));
+  addscentControl(): void {
+    this.scent.push(this.fb.control(''));
   }
 
-  removeStockControl(index: number) {
-    const stockArray = this.productoForm.get('stock') as FormArray;
-    stockArray.removeAt(index);
+  removescentControl(index: number): void {
+    if (this.scent.length > 1) {
+      this.scent.removeAt(index);
+    }
+  }
+  
+  addStockControl(): void {
+    this.stock.push(this.fb.control(''));
   }
 
-  addStockControl() {
-    const stockArray = this.productoForm.get('stock') as FormArray;
-    stockArray.push(this.fb.control(''));
+  removeStockControl(index: number): void {
+    this.stock.removeAt(index);
   }
 
-  volver() {
+  volver(): void {
     this.router.navigate(['/products']);
   }
 }

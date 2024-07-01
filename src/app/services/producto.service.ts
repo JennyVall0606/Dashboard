@@ -7,9 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductoService {
 
-  private http = inject(HttpClient);
-
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:3000/api/products');

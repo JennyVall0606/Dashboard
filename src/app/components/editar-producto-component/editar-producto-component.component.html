@@ -8,7 +8,8 @@
           <form [formGroup]="productoForm" (ngSubmit)="actualizarProducto()">
             <div class="mb-3">
               <label for="name" class="form-label">Nombre del Producto</label>
-              <input type="text" id="name" class="form-control" formControlName="name">
+              <input type="text" id="name" name="name" class="form-control" formControlName="name">
+
             </div>
             <div class="mb-3">
               <label for="description" class="form-label">Descripción del Producto</label>
@@ -39,11 +40,11 @@
             </div>
             <div formArrayName="scent">
               <div *ngFor="let control of scent.controls; let i = index" class="mb-3 d-flex align-items-center">
-                <input type="text" class="form-control" [formControlName]="i" placeholder="Scent {{ i + 1 }}">
-                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeScentControl(i)">
+                <input type="text" class="form-control" [formControlName]="i" placeholder="scent {{ i + 1 }}">
+                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removescentControl(i)">
                   <i class="fas fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-primary btn-sm" (click)="addScentControl()">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addscentControl()">
                   <i class="fas fa-plus fa-lg text-muted"></i>
                 </button>
               </div>
