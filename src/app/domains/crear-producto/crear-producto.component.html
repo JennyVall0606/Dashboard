@@ -12,8 +12,8 @@
             </div>
           
             <div class="mb-3">
-              <label for="descripcion" class="form-label">Descripción del Producto</label>
-              <textarea id="descripcion" class="form-control" formControlName="descripcion"></textarea>
+              <label for="description" class="form-label">Descripción del Producto</label>
+              <textarea id="description" class="form-control" formControlName="description"></textarea>
             </div>
           
            
@@ -43,13 +43,13 @@
                
               </div>
 
-              <div formArrayName="aroma">
-                <div *ngFor="let control of aroma.controls; let i = index" class="mb-3 d-flex align-items-center">
-                  <input type="text" class="form-control" [formControlName]="i" placeholder="Aroma {{ i + 1 }}">
-                  <button type="button" class="btn btn-danger btn-sm ms-2"  (click)="removeAromaControl(i)">
+              <div formArrayName="scent">
+                <div *ngFor="let control of scent.controls; let i = index" class="mb-3 d-flex align-items-center">
+                  <input type="text" class="form-control" [formControlName]="i" placeholder="scent {{ i + 1 }}">
+                  <button type="button" class="btn btn-danger btn-sm ms-2"  (click)="removescentControl(i)">
                     <i class="fas fa-trash"></i>
                   </button>               
-                  <button type="button" class="btn btn-primary btn-sm" (click)="addAromaControl()">
+                  <button type="button" class="btn btn-primary btn-sm" (click)="addscentControl()">
                     <i class="fas fa-plus fa-lg text-muted"></i>
                   </button>
                 </div>

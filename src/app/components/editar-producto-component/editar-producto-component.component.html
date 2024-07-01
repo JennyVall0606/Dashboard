@@ -1,27 +1,71 @@
+<app-header></app-header>
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">Editar Producto</h3>
-            <form [formGroup]= "productoForm" (ngSubmit)="actualizarProducto()">
-              <div class="form-group">
-                <label for="name">Nombre</label>
-                <input id="name" formControlName="name" class="form-control" type="text">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3 class="card-title">Editar Producto</h3>
+          <form [formGroup]="productoForm" (ngSubmit)="actualizarProducto()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre del Producto</label>
+              <input type="text" id="name" class="form-control" formControlName="name">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción del Producto</label>
+              <textarea id="description" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div formArrayName="size">
+              <div *ngFor="let group of size.controls; let i = index" [formGroupName]="i" class="mb-3 d-flex align-items-center">
+                <input type="text" class="form-control" formControlName="size" placeholder="Size {{ i + 1 }}">
+                <input type="number" class="form-control ms-2" formControlName="price" placeholder="Price {{ i + 1 }}">
+                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeSizeControl(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addSizeControl()">
+                  <i class="fas fa-plus fa-lg text-muted"></i>
+                </button>
               </div>
-              <div class="form-group">
-                <label for="description">Descripción</label>
-                <input id="description" formControlName="description" class="form-control" type="text">
+            </div>
+            <div formArrayName="color">
+              <div *ngFor="let control of color.controls; let i = index" class="mb-3 d-flex align-items-center">
+                <input type="text" class="form-control" [formControlName]="i" placeholder="Color {{ i + 1 }}">
+                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeColorControl(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addColorControl()">
+                  <i class="fas fa-plus fa-lg text-muted"></i>
+                </button>
               </div>
-              <div class="form-group">
-                <label for="price">Precio</label>
-                <input id="price" formControlName="price" class="form-control" type="number">
+            </div>
+            <div formArrayName="scent">
+              <div *ngFor="let control of scent.controls; let i = index" class="mb-3 d-flex align-items-center">
+                <input type="text" class="form-control" [formControlName]="i" placeholder="Scent {{ i + 1 }}">
+                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeScentControl(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addScentControl()">
+                  <i class="fas fa-plus fa-lg text-muted"></i>
+                </button>
               </div>
-              <button type="submit" class="btn btn-primary mt-3">Actualizar Producto</button>
-            </form>
-          </div>
+            </div>
+            <div formArrayName="stock">
+              <div *ngFor="let control of stock.controls; let i = index" class="mb-3 d-flex align-items-center">
+                <input type="number" class="form-control" [formControlName]="i" placeholder="Stock {{ i + 1 }}">
+                <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeStockControl(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addStockControl()">
+                  <i class="fas fa-plus fa-lg text-muted"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mb-3 d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" (click)="volver()">Volver</button>
+              <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

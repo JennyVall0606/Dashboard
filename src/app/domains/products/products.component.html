@@ -1,17 +1,18 @@
 <app-header></app-header>
 
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="col-lg-12 offset-lg-0">
     <div class="card">
       <div class="card-body text-center">
-        <span class="titulo">Listado de Productos</span>
+        <h2 class="card-title text-center">Listado de Productos</h2>
         <button class="btn btn-success float-end" [routerLink]="['/products/CrearProducto']">Nuevo Producto</button>
+        
         <table class="table table-striped mt-3">
           <thead>
             <tr>
               <th scope="col">Nombre</th>
               <th scope="col">Descripción</th>
-              <th scope="col">Aroma</th>
+              <th scope="col">scent </th>
               <th scope="col">Color</th>
               <th scope="col">Size</th>
               <th scope="col">Precio</th>
@@ -26,7 +27,7 @@
               
               <td>
                 <ul>
-                  <li *ngFor="let aroma of product.aroma">{{ aroma }}</li>
+                  <li *ngFor="let scent of product.scent ">{{ scent }}</li>
                 </ul>
               </td>
               <td>

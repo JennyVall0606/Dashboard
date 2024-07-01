@@ -26,10 +26,10 @@ export class CrearProductoComponent implements OnInit{
     this.productoForm = this.fb.group(
       {
         producto: ['', Validators.required],
-        descripcion: ['', Validators.required],
+        description: ['', Validators.required],
         size: this.fb.array([]),
         color: this.fb.array([]),
-        aroma: this.fb.array([]),
+        scent: this.fb.array([]),
         stock: this.fb.array([])
         
       }
@@ -37,7 +37,7 @@ export class CrearProductoComponent implements OnInit{
 
     this.addSizeControl();
     this.addColorControl();
-    this.addAromaControl();
+    this.addscentControl();
     this.addStockControl();
     
   }
@@ -58,8 +58,8 @@ export class CrearProductoComponent implements OnInit{
     return this.productoForm.get('color') as FormArray;
   }
 
-  get aroma(): FormArray {
-    return this.productoForm.get('aroma') as FormArray;
+  get scent(): FormArray {
+    return this.productoForm.get('scent') as FormArray;
   }
 
   get stock(): FormArray {
@@ -73,7 +73,7 @@ export class CrearProductoComponent implements OnInit{
       return;
     }
     
-    const { producto, descripcion, size, stock } = this.productoForm.value;
+    const { producto, description, size, stock } = this.productoForm.value;
 
     const sizes = size.map((s: any) => ({
       code: s.size,
@@ -82,10 +82,10 @@ export class CrearProductoComponent implements OnInit{
 
     const nuevoProducto: Product = {
       name: producto,
-      descripcion: descripcion,
+      description: description,
       size: sizes,
       color: this.color.value,
-      aroma: this.aroma.value,
+      scent: this.scent.value,
       stock: stock,
       price: []  
     };
@@ -134,13 +134,13 @@ export class CrearProductoComponent implements OnInit{
     }
   }
 
-  addAromaControl(): void {
-    this.aroma.push(this.fb.control(''));
+  addscentControl(): void {
+    this.scent.push(this.fb.control(''));
   }
 
-  removeAromaControl(index: number): void {
-    if (this.aroma.length > 1) {
-      this.aroma.removeAt(index);
+  removescentControl(index: number): void {
+    if (this.scent.length > 1) {
+      this.scent.removeAt(index);
     }
   }
   

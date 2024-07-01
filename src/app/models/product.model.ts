@@ -1,10 +1,10 @@
 export interface Product {
   
   name: string;
-  descripcion: string;
+  description: string;
   size: { code: string }[];
   price: { price: number }[];
-  aroma: string[];
+  scent: string[];
   color: string[]; 
   stock: string[];
  
