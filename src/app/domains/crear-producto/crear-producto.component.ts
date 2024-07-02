@@ -25,7 +25,8 @@ export class CrearProductoComponent implements OnInit{
         size: this.fb.array([]),
         color: this.fb.array([]),
         scent: this.fb.array([]),
-        stock: this.fb.array([])
+        stock: this.fb.array([]),
+        
         
       }
     );
@@ -68,7 +69,7 @@ export class CrearProductoComponent implements OnInit{
       return;
     }
     
-    const { producto, description, size, stock } = this.productoForm.value;
+    const { producto, description, size, stock,  } = this.productoForm.value;
 
     const sizes = size.map((s: any) => ({
       code: s.size,
@@ -82,8 +83,12 @@ export class CrearProductoComponent implements OnInit{
       color: this.color.value,
       scent: this.scent.value,
       stock: stock,
-      price: []  
+      price: [],
+     
     };
+
+
+
     console.log(nuevoProducto);
     
     this.productoService.createProduct(nuevoProducto).subscribe(

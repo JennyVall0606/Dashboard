@@ -1,4 +1,4 @@
-// orders.component.ts
+
 
 import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from '../../services/order.service';

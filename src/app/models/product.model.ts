@@ -8,5 +8,6 @@ export interface Product {
   color: string[]; 
   stock: string[];
  
+ 
 }
 

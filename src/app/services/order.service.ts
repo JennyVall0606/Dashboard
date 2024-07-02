@@ -20,7 +20,7 @@ export class PurchaseService {
       .pipe(
         catchError(error => {
           console.error('Error fetching purchases:', error);
-          throw error; // Propagar el error para que el componente pueda manejarlo
+          throw error; 
         })
       );
   }
@@ -29,7 +29,7 @@ export class PurchaseService {
       .pipe(
         catchError(error => {
           console.error(`Error fetching purchase with id ${id}:`, error);
-          throw error; // Propagar el error para que el componente pueda manejarlo
+          throw error; 
         })
       );
   }

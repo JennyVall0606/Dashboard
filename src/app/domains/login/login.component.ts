@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           console.error('Error al iniciar sesión:', error);
           this.formInvalid = true;
           this.errorMessage = 'Error al iniciar sesión. Inténtalo de nuevo más tarde.';
-          // Agrega más detalles del error
+          
           if (error.status === 401) {
             this.errorMessage = 'Credenciales inválidas';
           } else {
