@@ -1,2 +1,40 @@
+
+
 <app-header></app-header>
-<p>orders works!</p>
+
+<main>
+  <div class="order-list">
+    <h2>Listado de Órdenes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID de Orden</th>
+          <th>Usuario</th>
+          <th>Productos</th>
+          <th>Total</th>
+          <th>Método de Pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="purchases.length > 0; else noPurchases">
+          <tr *ngFor="let purchase of purchases">
+            <td>{{ purchase._id }}</td>
+            <td>{{ purchase.user }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let product of purchase.products">{{ product }}</li>
+              </ul>
+            </td>
+            <td>{{ purchase.total }}</td>
+            <td>{{ purchase.paymentMethod.name }}</td>
+          </tr>
+        </ng-container>
+        <ng-template #noPurchases>
+          <tr>
+            <td colspan="5" class="text-center">No hay órdenes disponibles.</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</main>

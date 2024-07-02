@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.services';
 import { AuthService } from '../../services/auth.services';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { User } from '../../models/user.model';
+import { AppUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-login',  
@@ -38,10 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
  
-
   onSubmit() {
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value as User).subscribe({
+      this.userService.login(this.loginForm.value as AppUser).subscribe({
         next: (response: any) => {
           if (response.token) {
             this.authService.setToken(response.token);
@@ -55,11 +54,16 @@ export class LoginComponent implements OnInit {
           console.error('Error al iniciar sesión:', error);
           this.formInvalid = true;
           this.errorMessage = 'Error al iniciar sesión. Inténtalo de nuevo más tarde.';
+          // Agrega más detalles del error
+          if (error.status === 401) {
+            this.errorMessage = 'Credenciales inválidas';
+          } else {
+            this.errorMessage = `Error ${error.status}: ${error.message}`;
+          }
         },
       });
     } else {
       alert('Campos incompletos');
-
       this.loginForm.markAllAsTouched();
     }
   }

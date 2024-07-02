@@ -24,14 +24,16 @@ export class ProductsComponent implements OnInit {
     return item._id;
   }
   eliminarProducto(id: string): void {
-    this.productoService.deleteProduct(id).subscribe({
-      next: () => {
-        this.products = this.products.filter(product => product._id !== id);
-        alert('Producto eliminado con éxito');
-      },
-      error: (err) => {
-        console.error('Error eliminando producto', err);
-      }
-    });
+    if (confirm('¿Estás seguro de eliminar este producto?')) {
+      this.productoService.deleteProduct(id).subscribe({
+        next: () => {
+          this.products = this.products.filter(product => product._id !== id);
+          alert('Producto eliminado con éxito');
+        },
+        error: (err) => {
+          console.error('Error eliminando producto', err);
+        }
+      });
+    }
   }
 }

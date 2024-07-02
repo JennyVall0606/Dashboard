@@ -6,30 +6,29 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-    constructor(private router: Router) { }
+    private tokenKey = 'authToken';
 
-  setToken(token: string) {
-    localStorage.setItem('user_token', token);
-  }
+    constructor() { }
+    setToken(token: string): void {
+        localStorage.setItem(this.tokenKey, token);
+      }
+    
+      getToken(): string | null {
+        return localStorage.getItem(this.tokenKey);
+      }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
 
   removeToken() {
     localStorage.removeItem('user_token');
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
+  
+
+ isAuthenticated(): boolean {
+    return !!this.getToken();
   }
 
-  isLoggedIn(): boolean {
-    return this.getToken() !== null;
-  }
-
-  isLogged(): boolean {
-    return !!localStorage.getItem('user_token');
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
   }
 }

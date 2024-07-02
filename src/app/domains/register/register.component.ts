@@ -56,7 +56,13 @@ export class RegisterComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error en registro:', error);
-          this.toastr.error('Error en registro', 'Error');
+          if (error.status === 400) {
+            this.toastr.error('Solicitud inválida. Revisa los campos.', 'Error');
+          } else if (error.status === 409) {
+            this.toastr.error('El usuario ya existe.', 'Error');
+          } else {
+            this.toastr.error('Error en registro', 'Error');
+          }
         }
       });
     } else {

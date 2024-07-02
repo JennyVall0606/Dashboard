@@ -1,21 +1,30 @@
 
-header {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-  
-}
-
-
 .logo-container {
-    height: 60px;
-}
-
-#logo {
-    height: 100%;
-    width: auto;
-    border-radius: 5px;
-    object-fit: cover;
-   
-}
-
+    display: flex;
+    align-items: center;
+  }
+  
+  #logo {
+    max-width: 60px;
+  }
+  
+  .btn-outline-secondary {
+    margin-left: auto;
+  }
+  
+  header {
+     padding: 1rem;
+  }
+  
+    
+  header .header-title {
+    font-family: "Dancing Script", cursive; 
+    font-weight: 700; 
+    font-size: 3rem;
+    color: #000; 
+    margin-left: 10px;
+  }
+  
+  header .btn {
+    font-size: 0.9rem;
+     }
